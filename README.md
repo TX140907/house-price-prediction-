@@ -25,33 +25,39 @@ Feature engineering:
 - `TotalPorchSF` = total porch/deck area
 
 ### Install dependencies
-
 ```bash
 pip install pandas numpy scikit-learn xgboost joblib
-
+```
 ### Prepare the dataset
+
 Place the dataset files in your data folder:
+```text
 train.csv
 test.csv
+```
+Update the paths in `train.py` and `predict.py` if necessary.
 
-Update the paths in train.py and predict.py if necessary.
 ### Train the model
+```bash
 python train.py
-
+```
 The script will:
 - load the training data
 - create engineered features
 - preprocess numerical and categorical features
 - evaluate the model using 5-Fold Cross Validation
 - train the final XGBoost model on the full training dataset
-- save the trained pipeline as house_price_model.joblib
-### Make predictions
-python predict.py
+- save the trained pipeline as `house_price_model.joblib`
 
+### Make predictions
+```bash
+python predict.py
+```
 The script will:
-- load house_price_model.joblib
+
+- load `house_price_model.joblib`
 - load the test dataset
 - apply the same feature engineering used during training
 - predict house prices
-- convert predictions back from log scale using expm1
-- save the final predictions to predictions.csv
+- convert predictions back from log scale using `expm1`
+- save the final predictions to `predictions.csv`
